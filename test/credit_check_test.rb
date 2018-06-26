@@ -26,10 +26,10 @@ class CreditCheckTest < Minitest::Test
   end
 
   def test_it_doubles_every_odd_index_digit
-    credit_check = CreditCheck.new("1111")
+    credit_check = CreditCheck.new("2222")
     credit_check.create_integer_array
 
-    assert_equal [1, 2, 1, 2], credit_check.double_odd_indices
+    assert_equal [2, 4, 2, 4], credit_check.double_odd_indices
   end
 
 end

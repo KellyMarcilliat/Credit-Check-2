@@ -17,14 +17,13 @@ class CreditCheck
   end
 
   def double_odd_indices
-    @cc_split.map! do |digit|
-      if @cc_split.index(digit).odd? == true
-        digit * 2
-      else
+    @cc_split.map!.with_index do |digit, index|
+      if index % 2 == 0
         digit
+      else
+        digit * 2
       end
     end
-    # return @cc_split
   end
 
 end
