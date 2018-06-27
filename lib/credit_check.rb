@@ -11,9 +11,7 @@ class CreditCheck
   end
 
   def create_integer_array
-    @cc_split = cc_number.split(//).map! do |digit|
-      digit.to_i
-    end
+    @cc_split = cc_number.digits.reverse
   end
 
   def double_odd_indices
@@ -25,5 +23,21 @@ class CreditCheck
       end
     end
   end
+
+  def sum_digits_of_elements_greater_than_ten
+    @cc_split.map! do |digit|
+      if digit > 9
+        digit - 9
+      else
+        digit
+      end
+    end
+  end
+
+  def sum_all_elements
+    @sum_of_digits = @cc_split.sum
+  end 
+
+
 
 end
