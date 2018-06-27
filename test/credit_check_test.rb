@@ -37,14 +37,14 @@ class CreditCheckTest < Minitest::Test
     credit_check.create_integer_array
     credit_check.double_odd_indices
 
-    assert_equal [4, 7, 9, 6], credit_check.sum_digits_of_elements_greater_than_ten
+    assert_equal [4, 7, 9, 6], credit_check.sum_digits_of_elements_greater_than_nine
   end
 
   def test_it_sums_all_elements
     credit_check = CreditCheck.new(4893)
     credit_check.create_integer_array
     credit_check.double_odd_indices
-    credit_check.sum_digits_of_elements_greater_than_ten
+    credit_check.sum_digits_of_elements_greater_than_nine
 
     assert_equal 26, credit_check.sum_all_elements
   end

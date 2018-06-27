@@ -24,7 +24,7 @@ class CreditCheck
     end
   end
 
-  def sum_digits_of_elements_greater_than_ten
+  def sum_digits_of_elements_greater_than_nine
     @cc_split.map! do |digit|
       if digit > 9
         digit - 9
@@ -36,7 +36,7 @@ class CreditCheck
 
   def sum_all_elements
     @sum_of_digits = @cc_split.sum
-  end 
+  end
 
 
 
