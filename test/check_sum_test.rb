@@ -12,7 +12,7 @@ class CheckSumTest < Minitest::Test
   end
 
   def test_it_exists
-    check_sum = CheckSum.new#(1234567887654321)
+    check_sum = CheckSum.new
 
     assert_instance_of CheckSum, check_sum
   end

@@ -44,7 +44,7 @@ class CheckSum
       10 - @sum_of_digits % 10
     else
       @sum_of_digits % 10
-    end 
+    end
   end
 
   def calculate_check_sum_digit(card_number)
@@ -58,9 +58,9 @@ class CheckSum
 
 end
 
-check_sum = CheckSum.new
-
-p check_sum.calculate_check_sum_digit(554180892379524)
-
-p check_sum.calculate_check_sum_digit(426684148822564)
+# check_sum = CheckSum.new
+#
+# p check_sum.calculate_check_sum_digit(554180892379524)
+#
+# p check_sum.calculate_check_sum_digit(426684148822564)
 #

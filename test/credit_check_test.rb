@@ -6,7 +6,7 @@ require './lib/credit_check'
 class CreditCheckTest < Minitest::Test
 
   def test_it_exists
-    credit_check = CreditCheck.new#(1234567887654321)
+    credit_check = CreditCheck.new
 
     assert_instance_of CreditCheck, credit_check
   end
