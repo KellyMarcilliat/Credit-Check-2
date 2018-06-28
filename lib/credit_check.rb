@@ -2,42 +2,68 @@ require 'pry'
 
 class CreditCheck
 
-  attr_reader   :cc_number,
-                :cc_split
-
-  def initialize(cc_number)
-    @cc_number = cc_number
-    @cc_split = []
+  def store_card_number(card_number)
+    @card_number = card_number
   end
 
   def create_integer_array
-    @cc_split = cc_number.digits.reverse
+    @card_digits = @card_number.digits.reverse
   end
 
-  def double_odd_indices
-    @cc_split.map!.with_index do |digit, index|
-      if index % 2 == 0
-        digit
-      else
-        digit * 2
-      end
+  def normalize_number_of_digits
+    if @card_digits.count % 2 == 1
+      @card_digits.unshift(0)
+    else
+      @card_digits
     end
   end
 
+  def double_even_indices
+    @doubled_digits = []
+    @card_digits.each.with_index do |digit, index|
+      @doubled_digits <<
+      if index.even?
+        digit * 2
+      else
+        digit
+      end
+    end
+    return @doubled_digits
+  end
+
   def sum_digits_of_elements_greater_than_nine
-    @cc_split.map! do |digit|
+    @summed_digits = []
+    @doubled_digits.each do |digit|
+      @summed_digits <<
       if digit > 9
         digit - 9
       else
         digit
       end
     end
+    return @summed_digits
   end
 
   def sum_all_elements
-    @sum_of_digits = @cc_split.sum
+    @sum_of_digits = @summed_digits.sum
   end
 
+  def evaluate_validity
+    if @sum_of_digits % 10 == 0
+      @validity = true
+    else
+      @validity = false
+    end
+  end
 
-
+  def valid_number?(card_number)
+    store_card_number(card_number)
+    # binding.pry
+    create_integer_array
+    normalize_number_of_digits
+    double_even_indices
+    sum_digits_of_elements_greater_than_nine
+    sum_all_elements
+    evaluate_validity
+  end
 end
