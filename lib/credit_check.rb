@@ -50,20 +50,37 @@ class CreditCheck
 
   def evaluate_validity
     if @sum_of_digits % 10 == 0
-      @validity = true
+      true
     else
-      @validity = false
+      false
+    end
+  end
+
+  def express_validity
+    if @sum_of_digits % 10 == 0
+      "The number #{@card_number} is valid."
+    else
+      "The number #{@card_number} is invalid."
     end
   end
 
   def valid_number?(card_number)
     store_card_number(card_number)
-    # binding.pry
     create_integer_array
     normalize_number_of_digits
     double_even_indices
     sum_digits_of_elements_greater_than_nine
     sum_all_elements
     evaluate_validity
+  end
+
+  def validation_output(card_number)
+    store_card_number(card_number)
+    create_integer_array
+    normalize_number_of_digits
+    double_even_indices
+    sum_digits_of_elements_greater_than_nine
+    sum_all_elements
+    express_validity
   end
 end
