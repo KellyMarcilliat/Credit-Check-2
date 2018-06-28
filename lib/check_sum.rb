@@ -1,6 +1,5 @@
 require 'pry'
-
-class CreditCheck
+class CheckSum
 
   def store_card_number(card_number)
     @card_number = card_number
@@ -8,14 +7,6 @@ class CreditCheck
 
   def create_integer_array
     @card_digits = @card_number.digits.reverse
-  end
-
-  def normalize_number_of_digits
-    if @card_digits.count % 2 == 1
-      @card_digits.unshift(0)
-    else
-      @card_digits
-    end
   end
 
   def double_even_indices
@@ -48,40 +39,28 @@ class CreditCheck
     @sum_of_digits = @summed_digits.sum
   end
 
-  def evaluate_validity
-    if @sum_of_digits % 10 == 0
-      true
+  def give_check_sum_digit
+    if @sum_of_digits % 10 > 0
+      10 - @sum_of_digits % 10
     else
-      false
+      @sum_of_digits % 10
     end
   end
 
-  def express_validity
-    if @sum_of_digits % 10 == 0
-      "The number #{@card_number} is valid."
-    else
-      "The number #{@card_number} is invalid."
-    end
-  end
-
-  def valid_number?(card_number)
+  def calculate_check_sum_digit(card_number)
     store_card_number(card_number)
     create_integer_array
-    normalize_number_of_digits
     double_even_indices
     sum_digits_of_elements_greater_than_nine
     sum_all_elements
-    evaluate_validity
+    give_check_sum_digit
   end
 
-  def validation_output(card_number)
-    store_card_number(card_number)
-    create_integer_array
-    normalize_number_of_digits
-    double_even_indices
-    sum_digits_of_elements_greater_than_nine
-    sum_all_elements
-    express_validity
-  end
 end
+
+# check_sum = CheckSum.new
+#
+# p check_sum.calculate_check_sum_digit(554180892379524)
+#
+# p check_sum.calculate_check_sum_digit(426684148822564)
 #
