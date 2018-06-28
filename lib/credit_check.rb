@@ -84,5 +84,4 @@ class CreditCheck
     express_validity
   end
 end
-# credit_check = CreditCheck.new
-# p credit_check.valid_number?(6011797668867828)
+#
