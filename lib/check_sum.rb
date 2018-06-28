@@ -40,8 +40,27 @@ class CheckSum
   end
 
   def give_check_sum_digit
-    @sum_of_digits % 10
+    if @sum_of_digits % 10 > 0
+      10 - @sum_of_digits % 10
+    else
+      @sum_of_digits % 10
+    end 
+  end
+
+  def calculate_check_sum_digit(card_number)
+    store_card_number(card_number)
+    create_integer_array
+    double_even_indices
+    sum_digits_of_elements_greater_than_nine
+    sum_all_elements
+    give_check_sum_digit
   end
 
 end
+
+check_sum = CheckSum.new
+
+p check_sum.calculate_check_sum_digit(554180892379524)
+
+p check_sum.calculate_check_sum_digit(426684148822564)
 #
